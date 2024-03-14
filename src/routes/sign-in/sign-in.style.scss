@@ -1,0 +1,16 @@
+.sign-in-container{
+    display: flex;
+    align-items: center;
+    
+    .image-container{
+        width:60%;  
+        img{   
+            width: 100%;
+        }
+    }
+    .forms-container{
+        width: 60%;
+        
+
+    }
+}

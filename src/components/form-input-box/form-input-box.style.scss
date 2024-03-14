@@ -1,0 +1,21 @@
+.input-box {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+    .label-name {
+        font-size: 20px;
+        color: #333;
+        margin-right: 10px;
+        
+    }
+    input {
+        
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+}

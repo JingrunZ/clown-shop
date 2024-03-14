@@ -1,0 +1,20 @@
+.checkout-card-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    .item {
+      flex: 1; // 让每个 .item 占据相同的空间
+      text-align: center; // 文本水平居中
+      margin: 0; // 去除默认的外边距
+      font-size: 21px;
+      .item-image{
+        width: 100%;
+      }
+    }
+    .item:nth-child(3) {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; // 在水平方向上居中
+      }
+  }

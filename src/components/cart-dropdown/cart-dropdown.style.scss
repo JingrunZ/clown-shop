@@ -1,0 +1,42 @@
+.cart-dropdown-container{
+    position: absolute;
+    width: 240px;
+    height: 340px;
+    border:1px solid black;
+    padding: 20px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    top: 90px;
+    right: 50px;
+    //margin-right: 50px;
+    overflow-y: auto;
+    .empty-cart{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: #4caf50; /* 背景颜色 */
+    color: white; /* 文字颜色 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 过渡效果 */
+  }
+  
+  /* 按钮悬停状态 */
+  .cart-btn:hover {
+    background-color: #45a049; /* 鼠标悬停时的背景颜色 */
+  }
+  
+
+  
