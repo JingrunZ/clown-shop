@@ -9,22 +9,6 @@ import './categories-preview.style.scss'
 const CategoriesPreview = ({category,product}) => {
     const { cartProduct, setCartProduct } = useContext(CartContext);
 
-    const handleCart = (product) => {
-        const existingCartItem = cartProduct.find((el) => {
-          return el.id === product.id;
-        });
-        if (existingCartItem) {
-          const newCartItems = cartProduct.map((item) => {
-            return item.id === product.id
-              ? { ...product, quality: item.quality + 1 }
-              : item;
-          });
-          setCartProduct(newCartItems);
-        } else {
-          setCartProduct([...cartProduct, { ...product, quality: 1 }]);
-        }
-      };
-
       return (
         <div className="category-preview-container">
             <div className='category-name-container' >
@@ -38,7 +22,7 @@ const CategoriesPreview = ({category,product}) => {
                         return <Product 
                         key={el.id} 
                         productInfo={el}
-                        handleCart={() => handleCart(el)}
+                        
                         />
                     })}
             </div>

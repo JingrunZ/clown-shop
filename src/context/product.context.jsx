@@ -5,13 +5,11 @@ import { addCollectionAndDocuments,getCategoriesAndDocuments } from "../utils/fi
 import SHOP_DATA from '../shop-data.js'
 
 export const ProductContext = createContext({
-    categoryMap:null,
-    setCategoryMap:()=>null
+    //categoryMap:null,
+    //setCategoryMap:()=>null
 })
 
 export const ProductProvider = ({children}) =>{
-    
-    
     const [categoryMap, setCategoryMap] = useState({})
 
     //store data 

@@ -8,42 +8,25 @@ import './category.style.scss'
 
 const Category = () =>{
     const { category } = useParams()
-    console.log(category)
-    const { cartProduct, setCartProduct } = useContext(CartContext);
-    const { categoryMap } = useContext(ProductContext);
-    const [product,setProduct] = useState([])
     
-    useEffect(()=>{
-        setProduct(categoryMap[category])
-        console.log(product)
-    },[category,categoryMap])
-
-    const handleCart = (product) => {
-        const existingCartItem = cartProduct.find((el) => {
-          return el.id === product.id;
-        });
-        if (existingCartItem) {
-          const newCartItems = cartProduct.map((item) => {
-            return item.id === product.id
-              ? { ...product, quality: item.quality + 1 }
-              : item;
-          });
-          setCartProduct(newCartItems);
-        } else {
-          setCartProduct([...cartProduct, { ...product, quality: 1 }]);
-        }
-      };
+    const { cartProduct, setCartProduct,handleCart } = useContext(CartContext);
+    const { categoryMap } = useContext(ProductContext);
+    console.log(categoryMap[category])
+    //const [product,setProduct] = useState([])
+    
+    //useEffect(()=>{
+    //    setProduct(categoryMap[category])
+    //    console.log(product)
+    //},[category,categoryMap])
 
     return(
         <div>
             <h2 className='category-title'>{category.toUpperCase()}</h2>
             <div className="category-container">
-            {product && product.map( product =>{
+            {categoryMap[category] && categoryMap[category].map( product =>{
                 return <Product key={product.id} 
                     productInfo={product}
                     handleCart={() => handleCart(product)}/>
-                
-                
             })}
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { CartContext } from "../../context/cart.context";
 
@@ -8,36 +8,19 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const CheckOutCard = ({ product }) => {
   const { name, id, imageUrl, quality, price } = product;
 
-    const {cartProduct,setCartProduct} = useContext(CartContext) 
+    const {cartProduct,handleIncrement,handleDecrement,removeItem} = useContext(CartContext) 
 
-   
-    const handleIncrement = (productToAdd) => {
-        const increArray = cartProduct.map(el=>{
-            return el.id === productToAdd.id
-            ?{...el,quality:el.quality+1}
-            :el
-        })
-        setCartProduct(increArray)
-    }
-
-    const handleDecrement = (productToRemove) => {
-        console.log(cartProduct)
-        const decreArray = cartProduct.map(el=>{
-            return el.id === productToRemove.id && el.quality > 0 
-            ?{...el,quality:el.quality-1}
-            :el
-        })
-
-        const removeProduct = decreArray.filter(el=>{
-            return el.quality > 0
-        })
-        setCartProduct(removeProduct)
-    }
-
-    const removeItem = (productToClear) =>{
-        const removedArray = cartProduct.filter(el=>el.id !== productToClear.id)
-        setCartProduct(removedArray)
-    }
+    //const removeItem = (productToClear) =>{
+        //const removedArray = cartProduct.cartProduct.filter(el=>el.id !== productToClear.id)
+        //setCartProduct(removedArray)
+    //}
+    useEffect(()=>{
+      cartProduct.forEach(el =>{
+        return el.quality === 0
+        ?removeItem(el)
+        :el
+      })
+    },[cartProduct])
 
   return (
     <div className="checkout-card-container">
@@ -46,7 +29,7 @@ const CheckOutCard = ({ product }) => {
       </div>
       <p className="item">{name}</p>
 
-      <p className="item">
+      <div className="item">
         <div onClick={()=>handleDecrement(product)} className="arrow">
           <i className="bi bi-caret-left"></i>
         </div>
@@ -54,10 +37,10 @@ const CheckOutCard = ({ product }) => {
         <div onClick={()=>handleIncrement(product)} className="arrow">
           <i className="bi bi-caret-right"></i>
         </div>
-      </p>
+      </div>
       <p className="item">{price}</p>
       <p className="item" onClick={()=>removeItem(product)}>
-        <i class="bi bi-x-circle"></i>
+        <i className="bi bi-x-circle"></i>
       </p>
       
     </div>

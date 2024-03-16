@@ -7,6 +7,7 @@ import { useContext } from 'react'
 
 const CartIcon = ({handleCart}) =>{
     const {cartProduct} = useContext(CartContext)
+    console.log(cartProduct)
     
     const productNum = cartProduct.reduce((accumulator,currentValue)=>{
         return accumulator += currentValue.quality
@@ -16,7 +17,7 @@ const CartIcon = ({handleCart}) =>{
     return(
         <div className='cart-icon-container' onClick={handleCart}>
             <CartLogo className='shopping-icon'/>
-            <span className='item-count'> {productNum} </span>
+            <span className='item-count'> {productNum} </span> 
         </div>
     )
 }

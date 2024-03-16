@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import './directory.style.scss'
 
 const DirectoryItem = ({categories}) =>{
-    console.log(categories)
+    //console.log(categories)
     return(
         <div className="directories-container">
             {categories.map((category) => (

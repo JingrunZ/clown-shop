@@ -8,7 +8,7 @@ import './checkout.style.scss'
 
 const CheckOut = () => {
 
-    const {cartProduct,setCartProduct} = useContext(CartContext)
+    const {cartProduct} = useContext(CartContext)
 
     const [total,setTotal] = useState(0)
 
