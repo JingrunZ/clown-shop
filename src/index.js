@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./context/user.context";
 import { ProductProvider } from "./context/product.context";
@@ -13,15 +16,17 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   //<React.StrictMode>
+  <Provider store={store}>
     <BrowserRouter>
-      <UserProvider>
-        <ProductProvider>
+      
+        
           <CartProvider>
             <App />
           </CartProvider>
-        </ProductProvider>
-      </UserProvider>
+        
+      
     </BrowserRouter>
+    </Provider>
   //</React.StrictMode>
 );
 

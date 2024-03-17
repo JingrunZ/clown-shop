@@ -11,6 +11,7 @@ export const ProductContext = createContext({
 
 export const ProductProvider = ({children}) =>{
     const [categoryMap, setCategoryMap] = useState({})
+    console.log(categoryMap)
 
     //store data 
     //addCollectionAndDocuments('categories',SHOP_DATA)

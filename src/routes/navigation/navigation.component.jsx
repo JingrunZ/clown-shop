@@ -1,6 +1,12 @@
-import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../../assets/crown.svg";
+
+import { useSelector } from "react-redux";
+import setCurrentUser from "../../store/user/user.action";
+import { useDispatch } from "react-redux";
+import { auth } from "../../utils/firebase/firebase.utils";
+import { onAuthStateChanged } from "firebase/auth";
 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropDown from "../../components/cart-dropdown/cart-dropdown.component";
@@ -13,16 +19,17 @@ import { UserContext } from "../../context/user.context";
 import { signOutAuthUser, Auth } from "../../utils/firebase/firebase.utils";
 
 const Navigation = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-  
+  //const { currentUser, setCurrentUser } = useContext(UserContext);
+  const dispatched = useDispatch()
+  const currentUser = useSelector(state => state.user)
 
   const [cartOpen, setCartOpen] = useState(false);
+  
 
-  console.log(currentUser);
 
   const handleSignOut = () => {
     signOutAuthUser();
-    setCurrentUser(null);
+    dispatched(setCurrentUser(null));
   };
 
   const handleCartOpen = () => {
