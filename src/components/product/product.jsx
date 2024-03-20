@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
-
+import { useDispatch } from "react-redux";
 import './product.style.scss'
+import {setCart} from "../../store/cart/cart.action";
 
 const Product = ({productInfo}) => { 
     const {imageUrl,name,price} = productInfo
-    const {handleCart} = useContext(CartContext)
+    const dispatched = useDispatch()
+    //const {handleCart} = useContext(CartContext)
     //console.log(productInfo)
     
+    const handleCart = (productInfo) =>{
+      dispatched(setCart(productInfo))
+    }
     
   return (
     <div className="card-container">

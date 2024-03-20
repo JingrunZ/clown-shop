@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import {useEffect} from 'react';
 import {useDispatch} from 'react-redux'
 import setCurrentUser from './store/user/user.action';
-import setCategoryMap from './store/categories/categories.action';
+import {fetchCategoriesAsync} from './store/categories/categories.action';
 import {auth} from './utils/firebase/firebase.utils'
 import { onAuthStateChanged } from "firebase/auth";
 import { getCategoriesAndDocuments } from "./utils/firebase/firebase.utils";
@@ -30,12 +30,7 @@ const App = () => {
   }, [])
 
   useEffect(()=>{
-    const fetchData = async() =>{
-      const data = await getCategoriesAndDocuments()
-      
-      dispatched(setCategoryMap(data))
-    }
-    fetchData()
+    dispatched(fetchCategoriesAsync())
   },[])
 
   return (

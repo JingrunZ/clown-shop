@@ -3,21 +3,20 @@ import { ProductContext } from "../../context/product.context"
 import { CartContext } from "../../context/cart.context"
 import Product from "../../components/product/product"
 import { useParams } from "react-router-dom"
+import { UseSelector, useDispatch, useSelector } from "react-redux"
 
 import './category.style.scss'
+import { setCart } from "../../store/cart/cart.action"
+import { selectCategoriesMap } from "../../store/categories/categories.selector"
 
 const Category = () =>{
     const { category } = useParams()
+    const dispatched = useDispatch()
+    const categoryMap = useSelector(selectCategoriesMap)
     
-    const { cartProduct, setCartProduct,handleCart } = useContext(CartContext);
-    const { categoryMap } = useContext(ProductContext);
-    console.log(categoryMap[category])
-    //const [product,setProduct] = useState([])
-    
-    //useEffect(()=>{
-    //    setProduct(categoryMap[category])
-    //    console.log(product)
-    //},[category,categoryMap])
+    const handleCart = (product) =>{
+        dispatched(setCart(product))
+    }
 
     return(
         <div>

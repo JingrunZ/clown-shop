@@ -1,15 +1,20 @@
 import { useContext, useEffect } from "react";
 
 import { CartContext } from "../../context/cart.context";
+import { increCart,decreCart,removeCart } from "../../store/cart/cart.action";
 
 import "./checkout-card.style.scss";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useDispatch, useSelector } from "react-redux";
+import { UseDispatch } from "react-redux";
 
 const CheckOutCard = ({ product }) => {
   const { name, id, imageUrl, quality, price } = product;
+  console.log(product)
 
-    const {cartProduct,handleIncrement,handleDecrement,removeItem} = useContext(CartContext) 
+    const dispatched = useDispatch()
 
+    const cartProduct = useSelector(state=>state.cart)
     //const removeItem = (productToClear) =>{
         //const removedArray = cartProduct.cartProduct.filter(el=>el.id !== productToClear.id)
         //setCartProduct(removedArray)
@@ -21,6 +26,17 @@ const CheckOutCard = ({ product }) => {
         :el
       })
     },[cartProduct])
+
+    const handleIncrement = (product) =>{
+      dispatched(increCart(product))
+    }
+    const handleDecrement = (product) =>{
+      dispatched(decreCart(product))
+    }
+    const removeItem = (product) =>{
+      dispatched(removeCart(product))
+    }
+    
 
   return (
     <div className="checkout-card-container">

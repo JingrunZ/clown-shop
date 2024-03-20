@@ -1,13 +1,21 @@
-const INITIAL_VALUE = {}
+const INITIAL_VALUE = {
+    categories:[],
+    isLoading:false,
+    error:null
+}
 
-export const categoriesReducer = (state = INITIAL_VALUE,action) =>{
+ const categoriesReducer = (state = INITIAL_VALUE,action) =>{
     const {type,payload} = action
-    console.log(type)
-    console.log(payload)
+    
     switch(type){
-        case "SET_CATEGORIES":
-            return {...payload}
-            default:
-                return state
+        case "SET_CATEGORIES_START":
+            return {...state,isLoading:true}
+        case "SET_CATEGORIES_SUCCESS":
+            return {...state,categories:payload,isLoading:false}
+        case "SET_CATEGORIES_FAIL":
+            return {...state,error:payload,isLoading:true}
+        default:
+            return state
     }
 }
+export default categoriesReducer

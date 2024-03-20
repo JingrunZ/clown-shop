@@ -16,13 +16,13 @@ export const ProductProvider = ({children}) =>{
     //store data 
     //addCollectionAndDocuments('categories',SHOP_DATA)
 
-    useEffect(()=>{
-        const fetchData = async()=>{
-            const data = await getCategoriesAndDocuments()
-            setCategoryMap(data)
-        } 
-        fetchData()
-    },[])
+    //useEffect(()=>{
+    //    const fetchData = async()=>{
+    //        const data = await getCategoriesAndDocuments()
+    //        setCategoryMap(data)
+    //    } 
+    //    fetchData()
+    //},[])
 
     const value = {categoryMap, setCategoryMap}
 

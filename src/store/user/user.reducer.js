@@ -1,6 +1,6 @@
 const initial_state = null
 
-export const userReducer = (state = initial_state,action) => {
+const userReducer = (state = initial_state,action) => {
     const {type,payload} = action
 
     switch(type){
@@ -10,3 +10,4 @@ export const userReducer = (state = initial_state,action) => {
                 return state
     }
 }
+export default userReducer

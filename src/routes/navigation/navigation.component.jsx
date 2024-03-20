@@ -17,16 +17,16 @@ import { useContext } from "react";
 import { UserContext } from "../../context/user.context";
 
 import { signOutAuthUser, Auth } from "../../utils/firebase/firebase.utils";
+import { selectUser } from "../../store/user/user.selector";
 
 const Navigation = () => {
   //const { currentUser, setCurrentUser } = useContext(UserContext);
   const dispatched = useDispatch()
-  const currentUser = useSelector(state => state.user)
-
+  const currentUser = useSelector(selectUser)
   const [cartOpen, setCartOpen] = useState(false);
+
   
-
-
+  
   const handleSignOut = () => {
     signOutAuthUser();
     dispatched(setCurrentUser(null));
