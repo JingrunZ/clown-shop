@@ -10,7 +10,7 @@ import { UseDispatch } from "react-redux";
 
 const CheckOutCard = ({ product }) => {
   const { name, id, imageUrl, quality, price } = product;
-  console.log(product)
+  
 
     const dispatched = useDispatch()
 

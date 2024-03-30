@@ -10,6 +10,9 @@ import { ProductProvider } from "./context/product.context";
 import { CartProvider } from "./context/cart.context";
 import { PersistGate } from "redux-persist/integration/react";
 
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from "./utils/stripe/stripe.utils";
+
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -20,7 +23,9 @@ root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter >
+      <Elements stripe={stripePromise}>
         <App />
+      </Elements>
       </BrowserRouter>
     </PersistGate>
   </Provider>

@@ -19,7 +19,7 @@ const composedEnhancers = compose(applyMiddleware(...middleWares))
 const persistConfig ={
     key:'root',
     storage,
-    blacklist:['user']
+    blacklist:['user','payStatus']
 }
 const persistedReducer = persistReducer(persistConfig,rootReducer)
 

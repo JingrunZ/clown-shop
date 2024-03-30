@@ -34,7 +34,6 @@ const Navigation = () => {
 
   const handleCartOpen = () => {
     setCartOpen(!cartOpen);
-    console.log(cartOpen);
   };
 
   return (

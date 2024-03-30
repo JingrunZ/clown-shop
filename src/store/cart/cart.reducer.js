@@ -36,6 +36,8 @@ const cartReducer = (state = INITIAL_VALUE,action) =>{
                 return el.id !== payload.id
             }) 
             return removedArray
+        case "CLEAR_CART":
+            return payload
             
         default:
             return state

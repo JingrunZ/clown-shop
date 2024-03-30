@@ -14,3 +14,8 @@ export const removeCart = (product) =>{
     return{type:'REMOVE_CART',payload:product} 
 }
 
+export const clearCart = () =>{
+    return{type:'CLEAR_CART',payload:[]} 
+}
+
+
